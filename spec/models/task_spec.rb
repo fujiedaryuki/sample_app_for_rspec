@@ -23,7 +23,13 @@ RSpec.describe Task, type: :model do
     it '別のタイトルでも有効' do 
       task_another_title = build(:task, title: 'test_title')
       expect(task_another_title).to be_valid
+      expect(task_another_title.errors).to be_empty
     end
-
+    
+    it 'is valid with all attributes' do
+      task = build(:task)
+      expect(task).to be_valid
+      expect(task.errors).to be_empty
+    end
   end
 end
